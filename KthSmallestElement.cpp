@@ -5,6 +5,7 @@ void swap(int &a,int &b){
     a=b;
     b=temp;
 }
+
 int myPartition(int a[],int l,int r){
     int piv=a[r];
     int i=l-1;
@@ -12,25 +13,32 @@ int myPartition(int a[],int l,int r){
         if(a[j]<piv){
             i++;
             swap(a[i],a[j]);
+            //i++;
         }
     }
     swap(a[i+1],a[r]);
     return i+1;
 }
+int randomPartition(int a[],int left,int right){
+    //int n = right-left+1;
+    srand(time(NULL));
+    int random=rand()%(right-left)+left;
+    swap(a[random],a[right]);
+    return myPartition(a,left,right);
+}
 int kthSmallest(int arr[], int l, int r, int k)
 {if (k > 0 && k <= r - l + 1) {
-    int index = myPartition(arr, l, r);
+    int index = randomPartition(arr, l, r);
     if (index - l == k - 1)
             return arr[index];
     if (index - l > k - 1)
-            return kthSmallest(arr, l, index - 1, k);
-            return kthSmallest(arr, index + 1, r,
-                            k - index + l - 1);
+        return kthSmallest(arr, l, index - 1, k);
+    return kthSmallest(arr, index + 1, r,k - index + l - 1);
     }
  return INT_MAX;
 }
 int main(){
-    cout<<"Array size: ";
+    cout<<"Array size1: ";
     int n;cin>>n;
     cout<<"Array elements: \n";
     int a[n];
@@ -50,6 +58,7 @@ int main(){
             }
         }
     }*/
+
     cout<<"Kth smallest value is: \n";
     cout<<kthSmallest(a, 0, n - 1, k)<<endl;
 

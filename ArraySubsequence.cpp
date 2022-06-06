@@ -45,4 +45,5 @@ int main(){
     printF(0,subset,a,n);
     cout<<"Subsequences: \n";
     powerSet(a,n);
+    return 0;
 }

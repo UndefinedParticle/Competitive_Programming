@@ -23,7 +23,7 @@ int main(){
         ll badness=abs(countZero-countOne);
         ll maxi=max(countZero,countOne);
         
-        if(badness%k==1){
+        if(badness%k){
             cout<<(badness/k)+1<<endl;
         }else{
             cout<<(badness/k)<<endl;

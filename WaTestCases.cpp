@@ -4,7 +4,6 @@ using namespace std;
 #define loop(i,a,n) for(int i=a;i<n;i++)
 
 
-
 int main(){
     #ifndef ONLINE_JUDGE
     freopen("input.txt", "r", stdin);
@@ -14,32 +13,26 @@ int main(){
     int t;cin>>t;
     while(t--){
         int n;cin>>n;
-        vector<int> a(n);
+        vector<int> s;
+        loop(i,0,n){
+            int x;cin>>x;
+            s.emplace_back(x);
+        }
+        string v;cin>>v;
 
-    
-            int l=1;
-            int r=n;
-            for(int i=n-1;i>=0;i--){
-                if((i+1)%2==0){
-                    a[i]=l;l++;
-                }else{
-                    a[i]=r;r--;
+        int mini=INT_MAX;
+        for(int i=0;i<n;i++){
+            if(v[i]=='0'){
+                if(s[i]<mini){
+                    mini=s[i];
                 }
             }
-        
+        }
+        cout<<mini<<endl;
+       
 
 
-
-        for(auto it:a){
-            cout<<it<<" ";
-        }cout<<endl;
-
-}
-
-
-        
-
-
+    }
 
 return 0;
 }

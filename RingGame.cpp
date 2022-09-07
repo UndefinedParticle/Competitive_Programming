@@ -17,24 +17,20 @@ int main(){
         int countZero=0,countOne=0;
         loop(i,0,n){
             int x;cin>>x;
-            if(x==0)
-                countZero++;
-            else
-                countOne++;
             a.emplace_back(x);
         }
-        int adj=0;
-        if(a[0]==a[n-1]) adj++;
-        loop(i,1,n){
-            if(a[i]==a[i-1])
-                adj++;
+        loop(i,0,n){
+            if(a[i]==a[(i+1)%n]){
+                if(a[i]==1)
+                    countOne++;
+                else
+                    countZero++;
+            }
         }
-
-        int ans=adj-abs(countZero-countOne);
-        if(ans%2==0)
-            cout<<"Bob\n";
-        else
+        if((min(countOne,countZero))&1)
             cout<<"Alice\n";
+        else
+            cout<<"Bob\n";
       
 
 
